@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navItems = document.querySelector(".nav-items");
   const navItemsA = document.querySelectorAll(".nav-items a");
   const destinationItems = document.querySelectorAll(".destination-item");
+  const logoLink = document.querySelector(".logo a");
 
   // Function to handle section scrolling based on hash
   function scrollToHashSection() {
@@ -49,6 +50,21 @@ document.addEventListener("DOMContentLoaded", () => {
       exploreBtn.classList.remove("scrolled");
       navItems.classList.remove("scrolled");
       hamburger.classList.remove("scrolled");
+    }
+  });
+
+  // Add click event listener for the logo
+  logoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Find the home section
+    const homeSection = document.querySelector(".home.container");
+    if (homeSection) {
+      // Update URL to base
+      history.pushState(null, "", "./");
+      // Smooth scroll to home section
+      homeSection.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   });
 

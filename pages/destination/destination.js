@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const exploreBtn = document.querySelector(".explore-btn");
   const navItems = document.querySelector(".nav-items");
   const navItemsA = document.querySelectorAll(".nav-items a");
+  const logoLink = document.querySelector(".logo a");
 
   // Check if current page is not index.html
   const isIndexPage =
@@ -15,6 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
     exploreBtn.classList.add("scrolled");
     navItems.classList.add("scrolled");
   }
+
+  // Add click event listener for the logo
+  logoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    // Get the current path
+    const currentPath = window.location.pathname;
+    
+    // Check which level of directory we're in
+    if (currentPath.includes('app.html')) {
+      window.location.href = '../index.html';  // For app.html
+    } else if (currentPath.includes('pages/destinations/')) {
+      window.location.href = '../../../../index.html';  // For pages in destinations folder
+    } else if (currentPath.includes('pages/')) {
+      window.location.href = '../../../index.html';  // For pages directly in pages folder
+    } else {
+      // If we're on the main page, smooth scroll to home section
+      const homeSection = document.querySelector(".home.container");
+      if (homeSection) {
+        history.pushState(null, "", "./");
+        homeSection.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    }
+  });
 
   // Add click event listener to each nav item
   navItemsA.forEach((item) => {

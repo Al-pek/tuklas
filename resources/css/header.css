@@ -37,6 +37,13 @@ header > nav {
   transition: color 0.3s ease;
 }
 
+.nav-items a:hover {
+ color: var(--color-dark-blue);
+}
+.nav-items.scrolled a:hover {
+  color: var(--color-dark-blue)
+ }
+
 .explore-btn {
   background-color: var(--color-primary);
   padding: 0.5rem 1rem;
@@ -46,6 +53,13 @@ header > nav {
   border: none;
   cursor: pointer;
   color: black;
+}
+.explore-btn:hover {
+  background-color: var(--color-primary) !important;
+}
+.explore-btn.scrolled:hover {
+  background-color: var(--color-dark-blue) !important;
+  color: white;
 }
 
 .hamburger {
@@ -82,7 +96,7 @@ header.scrolled .nav-items {
 }
 
 header.scrolled .nav-items a {
-  color: var(--color-dark-blue);
+  color: black;
 }
 
 header.scrolled .explore-btn {
