@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const exploreBtn = document.querySelector(".explore-btn");
   const navItems = document.querySelector(".nav-items");
   const navItemsA = document.querySelectorAll(".nav-items a");
-  const logoLink = document.querySelector(".logo a");
 
   // Check if current page is not index.html
   const isIndexPage =
@@ -16,32 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     exploreBtn.classList.add("scrolled");
     navItems.classList.add("scrolled");
   }
-
-  // Add click event listener for the logo
-  logoLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    
-    // Get the current path
-    const currentPath = window.location.pathname;
-    
-    // Check which level of directory we're in
-    if (currentPath.includes('app.html')) {
-      window.location.href = '../index.html';  // For app.html
-    } else if (currentPath.includes('pages/destinations/')) {
-      window.location.href = '../../../../index.html';  // For pages in destinations folder
-    } else if (currentPath.includes('pages/')) {
-      window.location.href = '../../../index.html';  // For pages directly in pages folder
-    } else {
-      // If we're on the main page, smooth scroll to home section
-      const homeSection = document.querySelector(".home.container");
-      if (homeSection) {
-        history.pushState(null, "", "./");
-        homeSection.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    }
-  });
 
   // Add click event listener to each nav item
   navItemsA.forEach((item) => {
@@ -274,6 +247,61 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     }
+
+    const videoTooltip = document.createElement("div");
+    videoTooltip.style.position = "absolute";
+    videoTooltip.style.zIndex = "100";
+    videoTooltip.style.display = "none";
+    videoTooltip.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+    videoTooltip.style.maxWidth = "40vw";
+    videoTooltip.style.maxHeight = "50vh";
+
+    const videoElement = document.createElement("video");
+    videoElement.style.width = "100%"; // Fill container width
+    videoElement.style.height = "100%"; // Fill container height
+    videoElement.style.objectFit = "cover";
+    videoElement.muted = true;
+    videoElement.autoplay = true;
+    videoElement.loop = true;
+
+    const churchName = item.querySelector("h3").textContent.trim();
+    const videoFileName =
+      churchName.replace(/\s+/g, "-").toLowerCase() + ".mp4";
+    const videoPath = `../../../resources/videos/${videoFileName}`;
+
+    videoElement.innerHTML = `<source src="${videoPath}" type="video/mp4">`;
+    videoTooltip.appendChild(videoElement);
+
+    document.body.appendChild(videoTooltip);
+
+    // Updated positioning logic for right side
+    mainImage.addEventListener("mouseenter", (e) => {
+      const rect = mainImage.getBoundingClientRect();
+      const tooltipWidth = Math.min(rect.width * 1.2, window.innerWidth * 0.4); // Responsive width
+
+      // Calculate position
+      let leftPosition = rect.right + 10; // Start with position to the right
+
+      // Check if tooltip would go off screen
+      if (leftPosition + tooltipWidth > window.innerWidth) {
+        leftPosition = rect.left - tooltipWidth - 10; // Place on left side if necessary
+      }
+
+      videoTooltip.style.width = `${tooltipWidth}px`;
+      videoTooltip.style.top = `${rect.top}px`; // Align with top of image
+      videoTooltip.style.left = `${leftPosition}px`;
+      videoTooltip.style.display = "block";
+
+      videoElement
+        .play()
+        .catch((error) => console.warn("Video play error:", error));
+    });
+
+    mainImage.addEventListener("mouseleave", () => {
+      videoTooltip.style.display = "none";
+      videoElement.pause();
+      videoElement.currentTime = 0;
+    });
   });
 
   const hamburger = document.querySelector(".hamburger");
