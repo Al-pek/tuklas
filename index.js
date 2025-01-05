@@ -85,6 +85,17 @@ document.addEventListener("DOMContentLoaded", () => {
         HISTORY: ".history.container",
       };
 
+      function updateHashAndScroll(hash) {
+      history.pushState(null, "", hash);
+      scrollToHashSection();
+    }
+  
+    // Add click event listener to the "Learn More" button
+    const learnMoreBtn = document.getElementById("learn-more-btn");
+    learnMoreBtn.addEventListener("click", () => {
+      updateHashAndScroll("#history");
+    });
+      
       // Find the corresponding section
       const sectionSelector = sectionMapping[navText];
 
