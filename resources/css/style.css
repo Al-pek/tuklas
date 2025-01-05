@@ -48,6 +48,10 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+  
+}
+
+img {
   border: solid 1px black;
 }
 
