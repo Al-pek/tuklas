@@ -54,8 +54,9 @@ header > nav {
   cursor: pointer;
   color: black;
 }
+
 .explore-btn:hover {
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-yellow) !important;
 }
 .explore-btn.scrolled:hover {
   background-color: var(--color-dark-blue) !important;
