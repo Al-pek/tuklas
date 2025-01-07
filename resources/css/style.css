@@ -27,10 +27,7 @@
   margin: 0;
   padding: 0;
 }
-html {
 
-    overflow-x: hidden;
-  }
 html,
 body {
   height: 100%;
@@ -42,7 +39,6 @@ body {
   text-rendering: optimizeLegibility;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  
 }
 
 img,
@@ -52,14 +48,6 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
-  
-}
-
-img[src*="vision-1.jpg"],
-img[src*="vision-2.jpg"],
-img[src*="vision-3.jpg"],
-img[src*="vision-4.jpg"] {
-  border: solid 1px black;
 }
 
 input,
@@ -128,6 +116,7 @@ a {
 header,
 .container {
   padding: 0 1rem; /* Default padding */
+  /* overflow-x: hidden; */
 }
 
 /* Small devices (landscape phones, 576px and up) */
