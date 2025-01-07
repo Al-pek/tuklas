@@ -14,8 +14,6 @@ header > nav {
   justify-content: space-between;
   padding: 1rem 5%;
   transition: padding 0.3s ease;
-  max-width: 1200px;
-  /* margin: 0 auto; */
 }
 
 .logo {
@@ -24,6 +22,9 @@ header > nav {
 }
 
 .nav-items {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -37,13 +38,6 @@ header > nav {
   transition: color 0.3s ease;
 }
 
-.nav-items a:hover {
- color: var(--color-dark-blue);
-}
-.nav-items.scrolled a:hover {
-  color: var(--color-dark-blue)
- }
-
 .explore-btn {
   background-color: var(--color-primary);
   padding: 0.5rem 1rem;
@@ -53,14 +47,6 @@ header > nav {
   border: none;
   cursor: pointer;
   color: black;
-}
-
-.explore-btn:hover {
-  background-color: var(--color-yellow) !important;
-}
-.explore-btn.scrolled:hover {
-  background-color: var(--color-dark-blue) !important;
-  color: white;
 }
 
 .hamburger {
@@ -97,7 +83,7 @@ header.scrolled .nav-items {
 }
 
 header.scrolled .nav-items a {
-  color: black;
+  color: var(--color-dark-blue);
 }
 
 header.scrolled .explore-btn {
@@ -146,6 +132,7 @@ nav > a:last-of-type .explore-btn {
     padding: 100px 0;
     height: 100vh;
     z-index: 1000;
+    transform: translateX(0%);
   }
 
   .nav-items a {
