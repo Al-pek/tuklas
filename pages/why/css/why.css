@@ -1,3 +1,7 @@
+.why {
+  position: relative;
+}
+
 .why-content {
   /* margin: 10rem 0 5rem 0; */
   display: flex;
@@ -5,8 +9,6 @@
   align-items: center;
   text-align: center;
   gap: 2.5rem;
-  position: relative;
-  z-index: 2;
 }
 
 .why-content > h2 {
@@ -15,6 +17,7 @@
   font-weight: 700;
   color: red;
 }
+
 .why-content > h2:hover {
   cursor: pointer;
   background: linear-gradient(to right, var(--color-yellow) 0%, red 67%);
@@ -78,45 +81,49 @@
   font-weight: 400;
 }
 
-.why-element-1 {
+.why-element-1,
+.why-element-2,
+.why-element-3,
+.why-element-4,
+.why-element-5,
+.why-element-6 {
   position: absolute;
+  z-index: -1;
+}
+
+.why-element-1 {
   top: 10rem;
   left: -5rem;
   width: 250px;
 }
 
 .why-element-2 {
-  position: absolute;
   top: 1rem;
   left: -5rem;
   width: 200px;
 }
 
 .why-element-3 {
-  position: absolute;
   top: -1rem;
   left: -5rem;
   width: 120px;
 }
 
 .why-element-4 {
-  position: absolute;
   top: -3rem;
   right: -5rem;
   width: 250px;
 }
 
 .why-element-5 {
-  position: absolute;
   top: -10rem;
-  right: -5rem;
+  right: 0rem;
   width: 200px;
 }
 
 .why-element-6 {
-  position: absolute;
   top: 5rem;
-  right: -5rem;
+  right: 0rem;
   width: 120px;
 }
 
