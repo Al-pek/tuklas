@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "",
           sectionMapping[navText] === ".home.container"
             ? "./"
-            : #${navText.replace(/\s+/g, "-").toLowerCase()}
+            : `#${navText.replace(/\s+/g, "-").toLowerCase()}`
         );
 
         // Smooth scroll to the section
