@@ -20,6 +20,9 @@
   --color-yellow: #f5db50;
 }
 
+html {
+  overflow-x: hidden;
+}
 *,
 *::before,
 *::after {
