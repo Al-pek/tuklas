@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navItems = document.querySelector(".nav-items");
   const navItemsA = document.querySelectorAll(".nav-items a");
   const destinationItems = document.querySelectorAll(".destination-item");
-  const logoLink = document.querySelector(".logo a");
 
   // Function to handle section scrolling based on hash
   function scrollToHashSection() {
@@ -53,21 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Add click event listener for the logo
-  logoLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Find the home section
-    const homeSection = document.querySelector(".home.container");
-    if (homeSection) {
-      // Update URL to base
-      history.pushState(null, "", "./");
-      // Smooth scroll to home section
-      homeSection.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  });
-
   // Add click event listener to each nav item
   navItemsA.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -85,17 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         HISTORY: ".history.container",
       };
 
-      function updateHashAndScroll(hash) {
-      history.pushState(null, "", hash);
-      scrollToHashSection();
-    }
-  
-    // Add click event listener to the "Learn More" button
-    const learnMoreBtn = document.getElementById("learn-more-btn");
-    learnMoreBtn.addEventListener("click", () => {
-      updateHashAndScroll("#history");
-    });
-      
       // Find the corresponding section
       const sectionSelector = sectionMapping[navText];
 
