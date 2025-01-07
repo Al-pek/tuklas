@@ -53,6 +53,13 @@ svg {
   max-width: 100%;
 }
 
+img[src*="vision-1.jpg"],
+img[src*="vision-2.jpg"],
+img[src*="vision-3.jpg"],
+img[src*="vision-4.jpg"] {
+  border: solid 1px black;
+}
+
 input,
 button,
 textarea,
