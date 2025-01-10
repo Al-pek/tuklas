@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Call the scroll function on page load
   scrollToHashSection();
 
+   // Add click event listener to the "Learn More" button
+   const learnMoreBtn = document.getElementById("learn-more-btn");
+   learnMoreBtn.addEventListener("click", () => {
+     history.pushState(null, "", "#history"); // Update URL hash
+     scrollToHashSection(); // Scroll to the section
+   });
+ 
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
       // Add scroll state classes
@@ -69,16 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         HISTORY: ".history.container",
       };
 
-    // Add click event listener to the "Learn More" button
-  const learnMoreBtn = document.getElementById("learn-more-btn");
-  learnMoreBtn.addEventListener("click", () => {
-    const historySection = document.querySelector(".history.container");
-    if (historySection) {
-      history.pushState(null, "", "#history"); // Update URL hash
-      historySection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
-    }
-  });
-
+   
       // Find the corresponding section
       const sectionSelector = sectionMapping[navText];
 
