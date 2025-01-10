@@ -68,17 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
         VISION: ".vision.container",
         HISTORY: ".history.container",
       };
-      
-  function updateHashAndScroll(hash) {
-      history.pushState(null, "", hash);
-      scrollToHashSection();
-    }
-  
+
     // Add click event listener to the "Learn More" button
-    const learnMoreBtn = document.getElementById("learn-more-btn");
-    learnMoreBtn.addEventListener("click", () => {
-      updateHashAndScroll("#history");
-    });
+  const learnMoreBtn = document.getElementById("learn-more-btn");
+  learnMoreBtn.addEventListener("click", () => {
+    const historySection = document.querySelector(".history.container");
+    if (historySection) {
+      history.pushState(null, "", "#history"); // Update URL hash
+      historySection.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
+    }
+  });
+
       // Find the corresponding section
       const sectionSelector = sectionMapping[navText];
 
